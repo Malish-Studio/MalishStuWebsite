@@ -5,12 +5,13 @@
 ## 1/Getting started
 
 1.  Open scene **AnimationBakerScene**
+     > [!TIP]
+     > By default, the scene is at AnimationBaker/Scenes/AnimationBakerScene.unity
 
-    By default, the scene is at AnimationBaker/Scenes/AnimationBakerScene.unity
 2. Drag your model onto the scene, adjust your model’s transform, and **\[SampleCamera]**’s FOV/transform to your liking
-3.  Open the **\[\[\[SAMPLER]]]** object and drag your model’s reference into **AnimationSampleRequester**’s **Root Model Transform** field and the AnimationClip you want to sample into **Sampler Clips** field
-
-    The **\[\[\[SAMPLER]]]** object contains the animation sampler and animation sample requester
+3. Open the **\[\[\[SAMPLER]]]** object and drag your model’s reference into **AnimationSampleRequester**’s **Root Model Transform** field and the AnimationClip you want to sample into **Sampler Clips** field
+     > [!NOTE]
+     > The **\[\[\[SAMPLER]]]** object contains the animation sampler and animation sample requester
 4. Enter Play Mode and tap button **Start Sampling on AnimationSampleRequester** component
 5. Navigate to the **Bake Path** to see your exported spritesheet!
 

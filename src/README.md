@@ -1,28 +1,5 @@
 ---
-icon: hand-wave
-cover:
-  light: .gitbook/assets/MysticRiver_sketch_4.png
-  dark: .gitbook/assets/MysticRiver_sketch_4.png
-coverY: 0
-layout:
-  width: wide
-  cover:
-    visible: true
-    size: full
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
-  tags:
-    visible: true
+![Landing Image](.gitbook/assets/MysticRiver_sketch_4.png)
 ---
 
 # Malish Studio
@@ -31,7 +8,10 @@ Welcome to the homepage of Malish Studio! We're a game development and tool deve
 
 ### Jump right in
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-camcorder">:camcorder:</i></h4></td><td><strong>Pixel Animation Baker</strong></td><td>Sample 3D animation into pixel 2D animation</td><td><a href="/broken/pages/HYStCRS5HsHWgs96vy1H">Broken link</a></td><td></td><td></td><td><a href="/broken/pages/7FvWQMF0kTK7HGhlQfmo">Broken link</a></td></tr><tr><td><h4><i class="fa-leaf">:leaf:</i></h4></td><td><strong>Future Tools</strong></td><td>In development...</td><td></td><td></td><td></td><td><a href="https://github.com/GitbookIO/gitbook-templates/blob/main/product-docs/broken-reference/README.md">https://github.com/GitbookIO/gitbook-templates/blob/main/product-docs/broken-reference/README.md</a></td></tr></tbody></table>
+|                                     Tools                                     | What's it? | Find it here! |
+|:-----------------------------------------------------------------------------:|:--------|---------------|
+| [Pixel Animation Baker](pixel-animation-baker/pixel-animation-baker/index.md) | Sample 3D animation into crisp pixel 2D animation     |               |
+|                                 Future Tools                                  | In development...     |               |
 
 ### Contact <a href="#asset-support" id="asset-support"></a>
 
