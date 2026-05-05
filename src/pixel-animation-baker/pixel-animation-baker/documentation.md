@@ -2,6 +2,12 @@
 
 ---
 
+### Table of Content
+
+<!-- toc -->
+
+---
+
 ## **1/Getting started**
 
 **1.**  Open scene **AnimationBakerScene**
@@ -24,8 +30,14 @@
 **5.** Navigate to the **Bake Path** to see your exported spritesheet!
    >> ![OutputPath](assets/OutputPath.png)
    
+   > [!NOTE]
+   >After you're done baking, you can view the baked animation data to the right hand side, and buttons to navigate the list of baked animations to the left hand side.
+   >
+   > You can also click on the animation data to copy the spritesheet name to your clipboard.
+   >>> ![Overview.png](assets%2FOverview.png)
 
-  
+   >If you cannot see them, chances are the game view is too high-res, you may consider changing to a low-res resolution for the game view
+   >> ![Resolution.png](assets%2FResolution.png)
 
   
 
@@ -34,7 +46,7 @@
 
 ## **2/Configuration**
 
-## 2.0/ Unity Compability Feature Config |
+ ### 2.0/ Unity Compability Feature Config |
 By default, the tool should be compatible with various Unity built-in features, such as post-processing volume, Renderer Features, Renderer Layer, Line Renderer, etc.
 
 Please send me an email if you have a problem using a Unity built-in features with the tool.
@@ -46,12 +58,12 @@ Please send me an email if you have a problem using a Unity built-in features wi
 > 
 > See [here](documentation.md#4example-scenes) for example
 
-## 2.1/Model\&Animation Config
+ ### 2.1/Model\&Animation Config
 
- ### 2.1.1/ Root Model Transform | 
+  #### 2.1.1/ Root Model Transform | 
  Reference to the model to be sampled
 
- ### 2.1.2/ Sampler Clips | 
+  #### 2.1.2/ Sampler Clips | 
  The list of AnimationClips to be sampled
 
    > [!CAUTION]
@@ -59,26 +71,26 @@ Please send me an email if you have a problem using a Unity built-in features wi
    > 
    > Animation component **must** use legacy AnimationClips
 
- ### 2.1.3/ Collect Animations on Bind | 
+  #### 2.1.3/ Collect Animations on Bind | 
  if enabled, everytime the model is bound, it will also collect all the AnimationClips referenced by the Animation/Animator component and add them to Sampler Clips. The model is bound in these three occasions if a model reference is assigned (a) on Awake, (b) when validate config, and (c) when user clicks the Bind Model button 
 
-## 2.2/Bake Config
+ ### 2.2/Bake Config
 
-### 2.2.1/Sprite Resolution
+  #### 2.2.1/Sprite Resolution
 
 The size of exported sprites. Be cautious when increasing the size of sprite, as this will increase the exported sprite sheet proportionally.
 
-### 2.2.2/Target Framerate
+  #### 2.2.2/Target Framerate
 
 The framerate of the exported spritesheet animation. Be cautious when increasing the target framerate, as this will increase the exported sprite sheet proportionally.
 
 When using mode Wait Frame, the highframe rate is not guaranteed to be stable. The usual safe threshold is to be equal or below **60fps**, depending on the machine.
 
-### 2.2.3/Save Path
+  #### 2.2.3/Save Path
 
 Save path is relative to the Project directory
 
-### 2.2.4/Exported Name Format
+  #### 2.2.4/Exported Name Format
 
 You can use string format to name the exported files. The formatted argument is as below:
 
@@ -90,13 +102,13 @@ You can use string format to name the exported files. The formatted argument is 
 
 3 - Target Framerate
 
-### 2.2.5/Exported Texture Format
+  #### 2.2.5/Exported Texture Format
 
 The texture format to use for the exported spritesheet
 
-## 2.3/Sampling Resource Template
+ ### 2.3/Sampling Resource Template
 
-### 2.3.1/Sampling RenderTexture Configs
+  #### 2.3.1/Sampling RenderTexture Configs
 
 Any subsequent RenderTextures created for sampling purpose will copy the **Color Fomat**, **Depth Stencil Format**, and **Filter Mode** of this original SampleRenderTexture.
 
@@ -104,7 +116,7 @@ You can adjust theses config to better suit your usage https://docs.unity3d.com/
 
 ---
 
-## 2.4/Sampling Mode
+ ### 2.4/Frame Seeking Mode
 This option defines how the sample find the animation frame to blit
 
 **Mode Wait Frame** |
@@ -136,9 +148,14 @@ In this mode, each update the sampler would request the animator to jump to the 
 
 </details>
 
-## **3/Troubleshoot Manual**
+### 2.5/Buffer Frame End
+In 3D looping animation, the frame 0 and the very last frame of the animation is usually the same for seamless looping. 
+When baking into 2D animation, these animations will create two similar frames.
+Tick this option if you want to blit the final frame, and omit it if not.
 
-## Common Problems
+ ## **3/Troubleshoot Manual**
+
+  ### Common Problems
 
 **1. Baked spritesheet’s background is not transparent**
 
@@ -154,7 +171,7 @@ First, verify that your configuration is correct:
 
 ---
 
-## **4/Example Scenes**
+ ## **4/Example Scenes**
 
 The package comes with several sample scenes, each showcasing various features you can use with the package. For these sample scenes, it's a must that your project use the URP RenderPipeline Asset that comes with the package. 
 
@@ -171,9 +188,12 @@ The package comes with several sample scenes, each showcasing various features y
 >        Set Render Pipeline Asset to the Render Pipeline Asset you want to use.
 
 
-###   1/AnimationBakerScene_GradientResampleColor
+  ###   1/AnimationBakerScene_GradientResampleColor
 
 This example adds a URP RendererFeature to resample the value of the blit image (in other words, the lightness/darkness of the image) to match the gradient provided in the post-processing material
+
+> [!NOTE]
+> Due to  copyright reason, the gradient image is not provided with the distributed source code. You can either create your own gradient image, or download the pallets available online from site such as Lospec 
 
 ![ResampleColor.png](assets%2FResampleColor.png)
 
@@ -185,11 +205,9 @@ This example adds a URP RendererFeature to resample the value of the blit image 
 > ![ResampleRenderFeature.png](assets%2FResampleRenderFeature.png)
 
 
-###   2/AnimationBakerScene_DepthBlit
+  ###   2/AnimationBakerScene_DepthBlit
 _(in progress...)_
-
-This example adds a URP RendererFeature to blit the depth texture of the camera to the view. You can sample animation as per normals to get the depth textures of the animation sequence
-
-![depthView.png](assets%2FdepthView.png)
+>This example adds a URP RendererFeature to blit the depth texture of the camera to the view. You can sample animation as per normals to get the depth textures of the animation sequence
+>![depthView.png](assets%2FdepthView.png)
 ---
 
