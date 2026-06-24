@@ -10,6 +10,14 @@
 
 ## **1/Getting started**
 
+**0.**  Setup
+
+  1. **URP Render Pipeline Asset must allow Alpha Processing**. Go to Edit > Project Settings > Quality, in the active quality tier, open **Render Pipeline Asset** in the inspector. In the **Post Processing** section of the asset, tick enable **Alpha Processing** 
+
+  2. You may also turn off the No Camera Rendering warning, and also adjust the Game View size to your liking
+   >
+   >>![SetupGameView.png](assets%2FSetupGameView.png)
+
 **1.**  Open scene **AnimationBakerScene**
 
    > [!TIP]
@@ -17,6 +25,12 @@
 
 **2.** Drag **your model** onto the scene, adjust your model’s transform, and **\[SampleCamera]**’s FOV/transform to your liking
 
+   > [!NOTE]
+   > In the scene view, locate the [SampleCamera] object. There should be a ground plane and a background plane to help you position your model.
+   >> ![Position.png](assets%2FPosition.png)
+   >> When you change the Camera's aspect or size, you can navigate to the AlignPlane component to align the planes correctly. For perspective camera, there's currently no support to align ground plane 
+   >>>![AlignPlane.png](assets%2FAlignPlane.png)
+   
 **3.** Open the **\[\[\[SAMPLER]]]** object and drag your model’s reference into **AnimationSampleRequester**’s **Root Model Transform** field and the AnimationClip you want to sample into **Sampler Clips** field
 
    > [!NOTE]
@@ -34,14 +48,27 @@
    >After you're done baking, you can view the baked animation data to the right hand side, and buttons to navigate the list of baked animations to the left hand side.
    >
    > You can also click on the animation data to copy the spritesheet name to your clipboard.
-   >>> ![Overview.png](assets%2FOverview.png)
+   >>> ![navigationUpdated.png](assets%2FnavigationUpdated.png)
 
-   >If you cannot see them, chances are the game view is too high-res, you may consider changing to a low-res resolution for the game view
-   >> ![Resolution.png](assets%2FResolution.png)
+> [!NOTE]
+> For **Capturing the Photo image** of your object, you can skip the Animation references. 
+> And tap the **Capture Object** button instead of Start Sampling button
+ 
+ 
+### **1.1/Setup for more advanced usage**
 
-  
+ 1. **Create a new RendererData** 
 
-  
+   It's generally a good practice to create a separate RendererData for the sampling scene vs your normal usage RendererData.
+   To do this, go to the active **RenderPipelineAsset**, duplicate a **RendererData**, **rename** it and **add** the newly created RendererData to the Renderer list
+
+   >![SetupRenderer.gif](assets%2FSetupRenderer.gif)
+
+   Next, you can go to [SampleCamera]'s Camera component, and change the **Renderer** to your newly created Renderer. This camera will now render using this Renderer, and you can add further effects to this Renderer to your likings.
+   
+   >![assignRendererCamera.gif](assets%2FassignRendererCamera.gif)
+
+
 ---
 
 ## **2/Configuration**
@@ -153,27 +180,11 @@ In 3D looping animation, the frame 0 and the very last frame of the animation is
 When baking into 2D animation, these animations will create two similar frames.
 Tick this option if you want to blit the final frame, and omit it if not.
 
- ## **3/Troubleshoot Manual**
-
-  ### Common Problems
-
-**1. Baked spritesheet’s background is not transparent**
-
-First, verify that your configuration is correct:
-
-* **\[SampleCamera]**’s background color (clear color) is transparent (alpha is zero)
-* **SampleRenderTexture** is referenced as **\[SampleCamera]**’s Output Texture and its color format has alpha component
-* In your **URP Render Asset**, make sure that you tick **Alpha Processing** in the Post-processing dropdown
-
-**2. The baked animation is unstable/Framerate is hitching**
-
-**3. The baked animation start frame or end frame doesn’t match**
-
 ---
 
- ## **4/Example Scenes**
+ ## **3/Complimentary RendererFeatures**
 
-The package comes with several sample scenes, each showcasing various features you can use with the package. For these sample scenes, it's a must that your project use the URP RenderPipeline Asset that comes with the package. 
+The package comes with several RendererFeatures, intended to aid with the pixel/stylized look. It also comes with several sample scenes, each showcasing various features you can use with the package. For the sample scenes, it's a must that your project use the URP RenderPipeline Asset that comes with the package. 
 
 > **Activating URP, HDRP, or a custom render pipeline based on SRP**
 >
@@ -187,10 +198,27 @@ The package comes with several sample scenes, each showcasing various features y
 >        Select **Edit > Project Settings > Quality**.
 >        Set Render Pipeline Asset to the Render Pipeline Asset you want to use.
 
+To use any of the RenderFeatures in your own Baker scene. Follow these steps:
+1. Go to [SampleCamera] in the scene, navigate to Renderer
+2. Search for the RendererData in your project
+3. Add the RendererFeatures to RendererData
 
-  ###   1/AnimationBakerScene_GradientResampleColor
+> [!NOTE]
+> For the majority of the current RenderFeatures, it works by adding a FullscreenRenderPassRenderFeature to the RendererData, and assign a fullscreen material to the Material slot
+> 
+> With the exception of the **Palette Resample** Feature, which requires it own RenderFeature. Go to the PaletteResample section for details.
+
+> [!NOTE]
+>For more information on RendererFeature, reference these Unity official documentations
+>
+><https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.1/manual/urp-renderer-feature.html>
+><https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.1/manual/urp-renderer-feature-how-to-add.html>
+
+
+  ###   1/GradientResampleColor 
 
 This example adds a URP RendererFeature to resample the value of the blit image (in other words, the lightness/darkness of the image) to match the gradient provided in the post-processing material
+The example material is [Shader Graphs_GradientMapEffect]
 
 > [!NOTE]
 > Due to  copyright reason, the gradient image is not provided with the distributed source code. You can either create your own gradient image, or download the pallets available online from site such as Lospec 
@@ -204,10 +232,109 @@ This example adds a URP RendererFeature to resample the value of the blit image 
 > 
 > ![ResampleRenderFeature.png](assets%2FResampleRenderFeature.png)
 
+#### Material Specs
 
-  ###   2/AnimationBakerScene_DepthBlit
-_(in progress...)_
->This example adds a URP RendererFeature to blit the depth texture of the camera to the view. You can sample animation as per normals to get the depth textures of the animation sequence
->![depthView.png](assets%2FdepthView.png)
+- GradientTexture 
+  : the texture to sample color from, you can either set the filter mode of this texture to Bilinear for a smooth color transition, or Point, for a clean stylized color transition. The colors of the texture should be one horizontal strip, and should go from dark to light from left to right.
+- ValueCalculationMode 
+  : the types of lightness/darkness calculation. GREYSCALE is a simple average calculation, while LUMINANCE uses explicit weights to be more accurate to how human eyes perceive colors.
+
+  ###   2/Posterize 
+
+This effect reduces the color to achieve the rougher flat-shading stylized look
+The example material is **[Shader Graphs_PosterizeEffect]**
+
+#### Material Specs
+
+Hue Posterization:
+- PosterizeHue 
+  : enable this to posterize hue
+- HueSteps 
+  : the step to perform hue posterization. As a rule of thumb, the lower this value, the more the hue variance is reduced
+- PosterizeHueLightness 
+  : enable this to posterize hue lightness  
+- LightnessSubSteps
+  : within the hue, the step to posterize the lightness/darkness. The lower the value, the less variance in the lightness and darkness of the hue
+
+Lightness Posterization:
+- PosterizeLightness 
+  : enable this to posterize lightness
+- LightnessSteps
+  : the step to perform lightness posterization. This is calculated AFTER hue posterization, and is not bound by hue posterization constraints.
+
+
+  ###   3/Outline
+
+This effect adds an outline to your image using the depth data. 
+
+#### Material Specs
+
+Outline Color:
+
+- Saturation
+  : The saturation of the outline
+- Color Multiply
+  : The color the outline median color will be multiplied by
+
+Depth:
+
+- Depth Difference Threshold
+  : The depth distance threshold that would register a pixel as an outline 
+- Outline Mode
+  : Whether the outline is to be inside or outside of the image
+
+> [!NOTE]
+> Generally, a lower Depth Difference Threshold means the effect will be more likely to register an edge as an outline
+
+
+###   4/PaletteResample
+
+This effect change the colors of your frame to those from the input palette based on which color on the palette is closest to the source color.
+
+**The feature currently support only horizontal palette!**
+
+You can use this feature by adding the **PalleteResampleRendererFeature** RendererFeature to the RendererData active in the **[SampleCamera]**
+
+#### Feature Specs
+
+The config for this feature is directly on the RendererFeature inspector. It's comprised of two distinct phase, (1st) Extract the colors from the Color Palette textures, and (2nd) Redraw the fullscreen frame with the extracted colors.
+
+The second phase is inherited from Unity's FullScreenPassRendererFeature, which you can view further info here  <https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/api/Global%20Namespace.FullScreenPassRendererFeature.html>
+
+Fullscreen Config:
+
+The **Pass Material** field must be set to **Shader Graphs_PaletteResample** material
+
+Palette Config:
+
+- Color Horizontal
+  : The number of colors on your palette texture, all colors are sampled horizontally
+- Palette Texture
+  :  The palette texture, you can change the filter setting of the texture to either get a rough or smooth gradient
+- Compute Shader
+  : (exact) The compute shader extracting the palette colors. This field must be set to the **ExtractColorPalette** Compute Shader
+- Palette Material
+  : (exact) The material to receive the color palettes. This field must be set to the **Shader Graphs_PaletteResample** material 
+ 
+ 
+> The field highlighted in yellow **must exactly adhere** to this image reference.
+> 
+> The field highlighted in green is open to user adjustment.
+> ![PaletteResampleSpec.png](assets%2FPaletteResampleSpec.png)
+
 ---
 
+## **4/Troubleshoot Manual**
+
+### Common Problems
+
+**1. Baked spritesheet’s background is not transparent**
+
+First, verify that your configuration is correct:
+
+* **\[SampleCamera]**’s background color (clear color) is transparent (alpha is zero)
+* **SampleRenderTexture** is referenced as **\[SampleCamera]**’s Output Texture and its color format has alpha component
+* In your **URP Render Asset**, make sure that you tick **Alpha Processing** in the Post-processing dropdown
+
+
+---
