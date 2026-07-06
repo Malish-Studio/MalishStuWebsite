@@ -2,6 +2,10 @@
 
 ---
 
+If you're viewing this on PDF,  you can go to <https://malish-studio.github.io/MalishStuWebsite/index.html> for latest update
+
+---
+
 ### Table of Content
 
 <!-- toc -->
@@ -12,20 +16,19 @@
 
 **0.**  Setup
 
-  1. **URP Render Pipeline Asset must allow Alpha Processing**. Go to Edit > Project Settings > Quality, in the active quality tier, open **Render Pipeline Asset** in the inspector. In the **Post Processing** section of the asset, tick enable **Alpha Processing** 
-
-  2. You may also turn off the No Camera Rendering warning, and also adjust the Game View size to your liking
-   >
-   >>![SetupGameView.png](assets%2FSetupGameView.png)
+  **URP Render Pipeline Asset must allow Alpha Processing**. 
+  > Go to Edit > Project Settings > Quality, in the active quality tier, open **Render Pipeline Asset** in the inspector. In the **Post Processing** section of the asset, tick enable **Alpha Processing**
 
 **1.**  Open scene **AnimationBakerScene**
 
    > [!TIP]
-   > By default, the scene is at AnimationBaker/Scenes/AnimationBakerScene.unity
-
+   > You may also turn off the No Camera Rendering warning, and also adjust the Game View size to your liking
+   >
+   >>![SetupGameView.png](assets%2FSetupGameView.png)
+   
 **2.** Drag **your model** onto the scene, adjust your model’s transform, and **\[SampleCamera]**’s FOV/transform to your liking
 
-   > [!NOTE]
+   > [!TIP]
    > In the scene view, locate the [SampleCamera] object. There should be a ground plane and a background plane to help you position your model.
    >> ![Position.png](assets%2FPosition.png)
    >> When you change the Camera's aspect or size, you can navigate to the AlignPlane component to align the planes correctly. For perspective camera, there's currently no support to align ground plane 
@@ -33,9 +36,6 @@
    
 **3.** Open the **\[\[\[SAMPLER]]]** object and drag your model’s reference into **AnimationSampleRequester**’s **Root Model Transform** field and the AnimationClip you want to sample into **Sampler Clips** field
 
-   > [!NOTE]
-   > The **\[\[\[SAMPLER]]]** object contains the animation sampler and animation sample requester
-    
    >>![SamplerPath.png](assets/SamplerPath.png)
  
 **4.** **Enter Play Mode** and tap button **Start Sampling on AnimationSampleRequester** component
@@ -44,8 +44,8 @@
 **5.** Navigate to the **Bake Path** to see your exported spritesheet!
    >> ![OutputPath](assets/OutputPath.png)
    
-   > [!NOTE]
-   >After you're done baking, you can view the baked animation data to the right hand side, and buttons to navigate the list of baked animations to the left hand side.
+   > [!TIP]
+   > After you're done baking, you can view the baked animation data to the right hand side, and buttons to navigate the list of baked animations to the left hand side.
    >
    > You can also click on the animation data to copy the spritesheet name to your clipboard.
    >>> ![navigationUpdated.png](assets%2FnavigationUpdated.png)
@@ -68,7 +68,6 @@
    
    >![assignRendererCamera.gif](assets%2FassignRendererCamera.gif)
 
-
 ---
 
 ## **2/Configuration**
@@ -77,6 +76,9 @@
 By default, the tool should be compatible with various Unity built-in features, such as post-processing volume, Renderer Features, Renderer Layer, Line Renderer, etc.
 
 Please send me an email if you have a problem using a Unity built-in features with the tool.
+
+> [!TIP]
+> Feel free to add lighting and Post-Processing Volume to Bake Scene!
 
 > **Scene Post-processing volume**
 > ![PPVolume.png](assets%2FPPVolume.png)
@@ -139,7 +141,7 @@ The texture format to use for the exported spritesheet
 
 Any subsequent RenderTextures created for sampling purpose will copy the **Color Fomat**, **Depth Stencil Format**, and **Filter Mode** of this original SampleRenderTexture.
 
-You can adjust theses config to better suit your usage https://docs.unity3d.com/6000.4/Documentation/ScriptReference/Experimental.Rendering.GraphicsFormat.html
+You can adjust theses config to better suit your usage <https://docs.unity3d.com/6000.4/Documentation/ScriptReference/Experimental.Rendering.GraphicsFormat.html>
 
 ---
 
@@ -184,53 +186,42 @@ Tick this option if you want to blit the final frame, and omit it if not.
 
  ## **3/Complimentary RendererFeatures**
 
-The package comes with several RendererFeatures, intended to aid with the pixel/stylized look. It also comes with several sample scenes, each showcasing various features you can use with the package. For the sample scenes, it's a must that your project use the URP RenderPipeline Asset that comes with the package. 
-
-> **Activating URP, HDRP, or a custom render pipeline based on SRP**
->
->    In your Project folder, locate the Render Pipeline Asset(s) that you want to use.
->
->    Set the default render pipeline, which Unity uses when there is no override for a given quality level
->        Select **Edit > Project Settings > Graphics**.
->        Set Default Render Pipeline to the Render Pipeline Asset you want to use.
->
->    Set override Render Pipeline Assets for different quality levels.
->        Select **Edit > Project Settings > Quality**.
->        Set Render Pipeline Asset to the Render Pipeline Asset you want to use.
-
-To use any of the RenderFeatures in your own Baker scene. Follow these steps:
-1. Go to [SampleCamera] in the scene, navigate to Renderer
-2. Search for the RendererData in your project
-3. Add the RendererFeatures to RendererData
+The package comes with several RendererFeatures, intended to aid with the pixel/stylized look.
 
 > [!NOTE]
-> For the majority of the current RenderFeatures, it works by adding a FullscreenRenderPassRenderFeature to the RendererData, and assign a fullscreen material to the Material slot
-> 
-> With the exception of the **Palette Resample** Feature, which requires it own RenderFeature. Go to the PaletteResample section for details.
+>To use any of the RenderFeatures in your own Baker scene. The steps are generally as belows:
+>1. Go to **[SampleCamera]** in the scene, navigate to Renderer
+>2. Search for the **RendererData** in your project
+>3. Add the **RendererFeatures** corresponding to the feature to RendererData
+
+|     Features     | RendererFeatures | Material     |
+|:----------------:|:-----------------|----------------------|
+| Gradient Sample  |      FullscreenRenderPassRenderFeature            | PAB_GradientMapEffect |
+|    Posterize     |        PosteriseRendererFeature          | PAB_PosterizeEffect  |
+|     Outline      |        FullscreenRenderPassRenderFeature          | PAB_Outline  |
+| Palette Resample |        PalleteResampleRendererFeature          | PAB_PaletteResample  |
 
 > [!NOTE]
+> You can search for **Sample_Effect_Renderer** for a practical example on how to set up each Renderer Feature
+
 >For more information on RendererFeature, reference these Unity official documentations
 >
-><https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.1/manual/urp-renderer-feature.html>
 ><https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.1/manual/urp-renderer-feature-how-to-add.html>
 
 
   ###   1/GradientResampleColor 
 
 This example adds a URP RendererFeature to resample the value of the blit image (in other words, the lightness/darkness of the image) to match the gradient provided in the post-processing material
-The example material is [Shader Graphs_GradientMapEffect]
 
-> [!NOTE]
-> Due to  copyright reason, the gradient image is not provided with the distributed source code. You can either create your own gradient image, or download the pallets available online from site such as Lospec 
+Use **FullscreenRenderPassRenderFeature** together with **[PAB_GradientMapEffect]** material
 
-![ResampleColor.png](assets%2FResampleColor.png)
+>[!IMPORTANT]
+>The FullscreenPassRendererFeature requires **Fetch Color Buffer**
 
 > [!NOTE]
 > You can change the gradient image to another image of your choosing. This example uses a Lospec pallete.
-
-> To add this feature to your scene, simply add the FullScreenPassRendererFeature to your active RendererData asset with the configurations as below
-> 
-> ![ResampleRenderFeature.png](assets%2FResampleRenderFeature.png)
+> Substitute the Renderer in this image example with your active Renderer
+>![ResampleColor.png](assets%2FResampleColor.png)
 
 #### Material Specs
 
@@ -242,7 +233,11 @@ The example material is [Shader Graphs_GradientMapEffect]
   ###   2/Posterize 
 
 This effect reduces the color to achieve the rougher flat-shading stylized look
-The example material is **[Shader Graphs_PosterizeEffect]**
+
+Use **PosteriseRendererFeature** with the material **[PAB_PosterizeEffect]**
+
+>[!IMPORTANT]
+>The FullscreenPassRendererFeature requires **Fetch Color Buffer**
 
 #### Material Specs
 
@@ -253,19 +248,17 @@ Hue Posterization:
   : the step to perform hue posterization. As a rule of thumb, the lower this value, the more the hue variance is reduced
 - PosterizeHueLightness 
   : enable this to posterize hue lightness  
-- LightnessSubSteps
-  : within the hue, the step to posterize the lightness/darkness. The lower the value, the less variance in the lightness and darkness of the hue
-
-Lightness Posterization:
-- PosterizeLightness 
-  : enable this to posterize lightness
-- LightnessSteps
-  : the step to perform lightness posterization. This is calculated AFTER hue posterization, and is not bound by hue posterization constraints.
-
+- PosterizeHueLightnessGradient
+  : within the hue, the gradient to posterize the lightness/darkness
 
   ###   3/Outline
 
-This effect adds an outline to your image using the depth data. 
+This effect adds an outline to your image using the depth data.
+
+Use **FullscreenRenderPassRenderFeature** together with **PAB_Outline** material
+
+>[!IMPORTANT]
+>The FullscreenPassRendererFeature requires **Fetch Color Buffer** and **Depth**
 
 #### Material Specs
 
@@ -274,7 +267,7 @@ Outline Color:
 - Saturation
   : The saturation of the outline
 - Color Multiply
-  : The color the outline median color will be multiplied by
+  : The outline color will be a median of its surrounding color, then multiplied by this color parameter
 
 Depth:
 
@@ -303,21 +296,23 @@ The second phase is inherited from Unity's FullScreenPassRendererFeature, which 
 
 Fullscreen Config:
 
-The **Pass Material** field must be set to **Shader Graphs_PaletteResample** material
+>[!IMPORTANT]
+>The **Pass Material** field must be set to **PAB_PaletteResample** material
+>The FullscreenPassRendererFeature requires **Fetch Color Buffer**
 
 Palette Config:
 
 - Color Horizontal
   : The number of colors on your palette texture, all colors are sampled horizontally
 - Palette Texture
-  :  The palette texture, you can change the filter setting of the texture to either get a rough or smooth gradient
+  :  The palette texture. When the texture width is higher than the color count, you can change the filter setting of the texture to either get a rough or smooth gradient
 - Compute Shader
   : (exact) The compute shader extracting the palette colors. This field must be set to the **ExtractColorPalette** Compute Shader
 - Palette Material
-  : (exact) The material to receive the color palettes. This field must be set to the **Shader Graphs_PaletteResample** material 
+  : (exact) The material to receive the color palettes. This field must be set to the **PAB_PaletteResample** material 
  
  
-> The field highlighted in yellow **must exactly adhere** to this image reference.
+> The field highlighted in yellow **must exactly adhere** to this image reference, with the exception of the material which has been renamed from [Shader Graphs_PaletteResample] to [PAB_PaletteResample]
 > 
 > The field highlighted in green is open to user adjustment.
 > ![PaletteResampleSpec.png](assets%2FPaletteResampleSpec.png)
