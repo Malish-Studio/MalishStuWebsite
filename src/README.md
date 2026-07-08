@@ -1,4 +1,3 @@
----
 ![Landing Image](.gitbook/assets/MysticRiver_sketch_4.png)
 ---
 
