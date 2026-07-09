@@ -1,0 +1,688 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>MalishStudio</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-d1fccfcd.css">
+        <link rel="stylesheet" href="css/general-788d25e7.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-2a0f51a3.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-8944f161.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">MalishStudio</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="malish-studio-1"><a href="#malish-studio-1" class="header">Malish Studio</a></h1>
+<h2 id=""><a class="header" href="#"><img src=".gitbook/assets/MysticRiver_sketch_4.png" alt="Landing Image"></a></h2>
+<h1 id="malish-studio"><a class="header" href="#malish-studio">Malish Studio</a></h1>
+<p>Welcome to the homepage of Malish Studio! We’re a game development and tool development studio based in Vietnam (GMT+7). Here, you can find information and updated documentations of our published tools. Get in touch!</p>
+<h3 id="jump-right-in"><a class="header" href="#jump-right-in">Jump right in</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: center">Tools</th><th style="text-align: left">What’s it?</th><th>Find it here!</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: center"><a href="#pixel-animation-baker">Pixel Animation Baker</a></td><td style="text-align: left">Sample 3D animation into crisp pixel 2D animation</td><td></td></tr>
+<tr><td style="text-align: center">Future Tools</td><td style="text-align: left">In development…</td><td></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="contact"><a class="header" href="#contact">Contact <a href="#asset-support" id="asset-support"></a></a></h3>
+<p>Email: malishstudiosupport@proton.me with your invoice number</p>
+<p>In the case where you would like to report a bug, or request help with a specific case, you may refer to this report format:</p>
+<details>
+<summary><strong>Report Format</strong></summary>
+<p>Tool:<br>Tool version:<br>Bug/Case Description:<br>Unity Version:<br>Render Pipeline:<br>OS:</p>
+</details>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="pixel-animation-baker"><a class="header" href="#pixel-animation-baker">Pixel Animation Baker</a></h1>
+<h3 id="changelog"><a class="header" href="#changelog">Changelog</a></h3>
+<p>1.0: First Release</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="pixel-animation-baker-documentation"><a class="header" href="#pixel-animation-baker-documentation">Pixel Animation Baker Documentation</a></h1>
+<hr>
+<p>If you’re viewing this on PDF,  you can go to <a href="https://malish-studio.github.io/MalishStuWebsite/index.html">https://malish-studio.github.io/MalishStuWebsite/index.html</a> for latest update</p>
+<hr>
+<h3 id="table-of-content"><a class="header" href="#table-of-content">Table of Content</a></h3>
+<ul>
+<li><a href="#1getting-started">1/Getting started</a>
+<ul>
+<li><a href="#11setup-for-more-advanced-usage">1.1/Setup for more advanced usage</a></li>
+</ul>
+</li>
+<li><a href="#2configuration">2/Configuration</a>
+<ul>
+<li><a href="#20-unity-compability-feature-config-">2.0/ Unity Compability Feature Config |</a></li>
+<li><a href="#21modelanimation-config">2.1/Model&amp;Animation Config</a>
+<ul>
+<li><a href="#211-root-model-transform-">2.1.1/ Root Model Transform |</a></li>
+<li><a href="#212-sampler-clips-">2.1.2/ Sampler Clips |</a></li>
+<li><a href="#213-collect-animations-on-bind-">2.1.3/ Collect Animations on Bind |</a></li>
+</ul>
+</li>
+<li><a href="#22bake-config">2.2/Bake Config</a>
+<ul>
+<li><a href="#221sprite-resolution">2.2.1/Sprite Resolution</a></li>
+<li><a href="#222target-framerate">2.2.2/Target Framerate</a></li>
+<li><a href="#223save-path">2.2.3/Save Path</a></li>
+<li><a href="#224exported-name-format">2.2.4/Exported Name Format</a></li>
+<li><a href="#225exported-texture-format">2.2.5/Exported Texture Format</a></li>
+</ul>
+</li>
+<li><a href="#23sampling-resource-template">2.3/Sampling Resource Template</a>
+<ul>
+<li><a href="#231sampling-rendertexture-configs">2.3.1/Sampling RenderTexture Configs</a></li>
+</ul>
+</li>
+<li><a href="#24frame-seeking-mode">2.4/Frame Seeking Mode</a></li>
+<li><a href="#25buffer-frame-end">2.5/Buffer Frame End</a></li>
+</ul>
+</li>
+<li><a href="#3complimentary-rendererfeatures">3/Complimentary RendererFeatures</a>
+<ul>
+<li><a href="#1gradientresamplecolor">1/GradientResampleColor</a>
+<ul>
+<li><a href="#material-specs">Material Specs</a></li>
+</ul>
+</li>
+<li><a href="#2posterize">2/Posterize</a>
+<ul>
+<li><a href="#material-specs-1">Material Specs</a></li>
+</ul>
+</li>
+<li><a href="#3outline">3/Outline</a>
+<ul>
+<li><a href="#material-specs-2">Material Specs</a></li>
+</ul>
+</li>
+<li><a href="#4paletteresample">4/PaletteResample</a>
+<ul>
+<li><a href="#feature-specs">Feature Specs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4troubleshoot-manual">4/Troubleshoot Manual</a>
+<ul>
+<li><a href="#common-problems">Common Problems</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="1getting-started"><a class="header" href="#1getting-started"><strong>1/Getting started</strong></a></h2>
+<p><strong>0.</strong>  Setup</p>
+<p><strong>URP Render Pipeline Asset must allow Alpha Processing</strong>.</p>
+<blockquote>
+<p>Go to Edit &gt; Project Settings &gt; Quality, in the active quality tier, open <strong>Render Pipeline Asset</strong> in the inspector. In the <strong>Post Processing</strong> section of the asset, tick enable <strong>Alpha Processing</strong></p>
+</blockquote>
+<p><strong>1.</strong>  Open scene <strong>AnimationBakerScene</strong></p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>You may also turn off the No Camera Rendering warning, and also adjust the Game View size to your liking</p>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets%2FSetupGameView.png" alt="SetupGameView.png"></p>
+</blockquote>
+</blockquote>
+<p><strong>2.</strong> Drag <strong>your model</strong> onto the scene, adjust your model’s transform, and <strong>[SampleCamera]</strong>’s FOV/transform to your liking</p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>In the scene view, locate the [SampleCamera] object. There should be a ground plane and a background plane to help you position your model.</p>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets%2FPosition.png" alt="Position.png">
+When you change the Camera’s aspect or size, you can navigate to the AlignPlane component to align the planes correctly. For perspective camera, there’s currently no support to align ground plane</p>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets%2FAlignPlane.png" alt="AlignPlane.png"></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>3.</strong> Open the <strong>[[[SAMPLER]]]</strong> object and drag your model’s reference into <strong>AnimationSampleRequester</strong>’s <strong>Root Model Transform</strong> field and the AnimationClip you want to sample into <strong>Sampler Clips</strong> field</p>
+<blockquote>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets/SamplerPath.png" alt="SamplerPath.png"></p>
+</blockquote>
+</blockquote>
+<p><strong>4.</strong> <strong>Enter Play Mode</strong> and tap button <strong>Start Sampling on AnimationSampleRequester</strong> component</p>
+<blockquote>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets/SampleRequesterButton.png" alt="SampleRequesterButton.png"></p>
+</blockquote>
+</blockquote>
+<p><strong>5.</strong> Navigate to the <strong>Bake Path</strong> to see your exported spritesheet!</p>
+<blockquote>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets/OutputPath.png" alt="OutputPath"></p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>After you’re done baking, you can view the baked animation data to the right hand side, and buttons to navigate the list of baked animations to the left hand side.</p>
+<p>You can also click on the animation data to copy the spritesheet name to your clipboard.</p>
+<blockquote>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets%2FnavigationUpdated.png" alt="navigationUpdated.png"></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>For <strong>Capturing the Photo image</strong> of your object, you can skip the Animation references.
+And tap the <strong>Capture Object</strong> button instead of Start Sampling button</p>
+</blockquote>
+<h3 id="11setup-for-more-advanced-usage"><a class="header" href="#11setup-for-more-advanced-usage"><strong>1.1/Setup for more advanced usage</strong></a></h3>
+<ol>
+<li><strong>Create a new RendererData</strong></li>
+</ol>
+<p>It’s generally a good practice to create a separate RendererData for the sampling scene vs your normal usage RendererData.
+To do this, go to the active <strong>RenderPipelineAsset</strong>, duplicate a <strong>RendererData</strong>, <strong>rename</strong> it and <strong>add</strong> the newly created RendererData to the Renderer list</p>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets%2FSetupRenderer.gif" alt="SetupRenderer.gif"></p>
+</blockquote>
+<p>Next, you can go to [SampleCamera]’s Camera component, and change the <strong>Renderer</strong> to your newly created Renderer. This camera will now render using this Renderer, and you can add further effects to this Renderer to your likings.</p>
+<blockquote>
+<p><img src="pixel-animation-baker/pixel-animation-baker/assets%2FassignRendererCamera.gif" alt="assignRendererCamera.gif"></p>
+</blockquote>
+<hr>
+<h2 id="2configuration"><a class="header" href="#2configuration"><strong>2/Configuration</strong></a></h2>
+<h3 id="20-unity-compability-feature-config-"><a class="header" href="#20-unity-compability-feature-config-">2.0/ Unity Compability Feature Config |</a></h3>
+<p>By default, the tool should be compatible with various Unity built-in features, such as post-processing volume, Renderer Features, Renderer Layer, Line Renderer, etc.</p>
+<p>Please send me an email if you have a problem using a Unity built-in features with the tool.</p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>Feel free to add lighting and Post-Processing Volume to Bake Scene!</p>
+</blockquote>
+<blockquote>
+<p><strong>Scene Post-processing volume</strong>
+<img src="pixel-animation-baker/pixel-animation-baker/assets%2FPPVolume.png" alt="PPVolume.png"></p>
+</blockquote>
+<blockquote>
+<p><strong>URP Renderer feature</strong></p>
+<p>See <a href="#4example-scenes">here</a> for example</p>
+</blockquote>
+<h3 id="21modelanimation-config"><a class="header" href="#21modelanimation-config">2.1/Model&amp;Animation Config</a></h3>
+<h4 id="211-root-model-transform-"><a class="header" href="#211-root-model-transform-">2.1.1/ Root Model Transform |</a></h4>
+<p>Reference to the model to be sampled</p>
+<h4 id="212-sampler-clips-"><a class="header" href="#212-sampler-clips-">2.1.2/ Sampler Clips |</a></h4>
+<p>The list of AnimationClips to be sampled</p>
+<blockquote class="blockquote-tag blockquote-tag-caution">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p>
+<p>Animator component <strong>must</strong> use non-legacy AnimationClips</p>
+<p>Animation component <strong>must</strong> use legacy AnimationClips</p>
+</blockquote>
+<h4 id="213-collect-animations-on-bind-"><a class="header" href="#213-collect-animations-on-bind-">2.1.3/ Collect Animations on Bind |</a></h4>
+<p>if enabled, everytime the model is bound, it will also collect all the AnimationClips referenced by the Animation/Animator component and add them to Sampler Clips. The model is bound in these three occasions if a model reference is assigned (a) on Awake, (b) when validate config, and (c) when user clicks the Bind Model button</p>
+<h3 id="22bake-config"><a class="header" href="#22bake-config">2.2/Bake Config</a></h3>
+<h4 id="221sprite-resolution"><a class="header" href="#221sprite-resolution">2.2.1/Sprite Resolution</a></h4>
+<p>The size of exported sprites. Be cautious when increasing the size of sprite, as this will increase the exported sprite sheet proportionally.</p>
+<h4 id="222target-framerate"><a class="header" href="#222target-framerate">2.2.2/Target Framerate</a></h4>
+<p>The framerate of the exported spritesheet animation. Be cautious when increasing the target framerate, as this will increase the exported sprite sheet proportionally.</p>
+<p>When using mode Wait Frame, the highframe rate is not guaranteed to be stable. The usual safe threshold is to be equal or below <strong>60fps</strong>, depending on the machine.</p>
+<h4 id="223save-path"><a class="header" href="#223save-path">2.2.3/Save Path</a></h4>
+<p>Save path is relative to the Project directory</p>
+<h4 id="224exported-name-format"><a class="header" href="#224exported-name-format">2.2.4/Exported Name Format</a></h4>
+<p>You can use string format to name the exported files. The formatted argument is as below:</p>
+<p>0 - Model Root transform name</p>
+<p>1 - Sampling AnimationClip name</p>
+<p>2 - Sprite Resolution</p>
+<p>3 - Target Framerate</p>
+<h4 id="225exported-texture-format"><a class="header" href="#225exported-texture-format">2.2.5/Exported Texture Format</a></h4>
+<p>The texture format to use for the exported spritesheet</p>
+<h3 id="23sampling-resource-template"><a class="header" href="#23sampling-resource-template">2.3/Sampling Resource Template</a></h3>
+<h4 id="231sampling-rendertexture-configs"><a class="header" href="#231sampling-rendertexture-configs">2.3.1/Sampling RenderTexture Configs</a></h4>
+<p>Any subsequent RenderTextures created for sampling purpose will copy the <strong>Color Fomat</strong>, <strong>Depth Stencil Format</strong>, and <strong>Filter Mode</strong> of this original SampleRenderTexture.</p>
+<p>You can adjust theses config to better suit your usage <a href="https://docs.unity3d.com/6000.4/Documentation/ScriptReference/Experimental.Rendering.GraphicsFormat.html">https://docs.unity3d.com/6000.4/Documentation/ScriptReference/Experimental.Rendering.GraphicsFormat.html</a></p>
+<hr>
+<h3 id="24frame-seeking-mode"><a class="header" href="#24frame-seeking-mode">2.4/Frame Seeking Mode</a></h3>
+<p>This option defines how the sample find the animation frame to blit</p>
+<p><strong>Mode Wait Frame</strong> |</p>
+<details><summary>
+In this mode, animation is played **synchronously**. 
+Each update, the sampler increments the timer by deltaTime, and checks if it should blit the current frame based on the timer, if yes perform blit and reset the timer
+</summary>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Sampling via this mode provides the <strong>most visual similarity</strong> to how you view the animation/effects in scene view.</p>
+<p>However, it’s also <strong>sensitive to the running framerate</strong>, as the baked animation’s frametime is always a multiple of the running frametime</p>
+</blockquote>
+</details>
+<p><strong>Mode Active Sampling</strong> |</p>
+<details><summary>
+In this mode, each update the sampler would request the animator to jump to the frame it needs, and blit the previous rendered frame
+</summary>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Active Sampling flow</p>
+<blockquote>
+<p>1.<em>Update 0</em> : Sampler request frame 0</p>
+<p>2.<em>End of Update 0</em> : frame 0 get rendered to the graphics buffer</p>
+<p>3.<em>Update 1</em> : blit from the graphics buffer to the output buffer and request next frame</p>
+</blockquote>
+</blockquote>
+</details>
+<h3 id="25buffer-frame-end"><a class="header" href="#25buffer-frame-end">2.5/Buffer Frame End</a></h3>
+<p>In 3D looping animation, the frame 0 and the very last frame of the animation is usually the same for seamless looping.
+When baking into 2D animation, these animations will create two similar frames.
+Tick this option if you want to blit the final frame, and omit it if not.</p>
+<hr>
+<h2 id="3complimentary-rendererfeatures"><a class="header" href="#3complimentary-rendererfeatures"><strong>3/Complimentary RendererFeatures</strong></a></h2>
+<p>The package comes with several RendererFeatures, intended to aid with the pixel/stylized look.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>To use any of the RenderFeatures in your own Baker scene. The steps are generally as belows:</p>
+<ol>
+<li>Go to <strong>[SampleCamera]</strong> in the scene, navigate to Renderer</li>
+<li>Search for the <strong>RendererData</strong> in your project</li>
+<li>Add the <strong>RendererFeatures</strong> corresponding to the feature to RendererData</li>
+</ol>
+</blockquote>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: center">Features</th><th style="text-align: left">RendererFeatures</th><th>Material</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: center">Gradient Sample</td><td style="text-align: left">FullscreenRenderPassRenderFeature</td><td>PAB_GradientMapEffect</td></tr>
+<tr><td style="text-align: center">Posterize</td><td style="text-align: left">PosteriseRendererFeature</td><td>PAB_PosterizeEffect</td></tr>
+<tr><td style="text-align: center">Outline</td><td style="text-align: left">FullscreenRenderPassRenderFeature</td><td>PAB_Outline</td></tr>
+<tr><td style="text-align: center">Palette Resample</td><td style="text-align: left">PalleteResampleRendererFeature</td><td>PAB_PaletteResample</td></tr>
+</tbody>
+</table>
+</div>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>You can search for <strong>Sample_Effect_Renderer</strong> for a practical example on how to set up each Renderer Feature</p>
+</blockquote>
+<blockquote>
+<p>For more information on RendererFeature, reference these Unity official documentations</p>
+<p><a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.1/manual/urp-renderer-feature-how-to-add.html">https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.1/manual/urp-renderer-feature-how-to-add.html</a></p>
+</blockquote>
+<h3 id="1gradientresamplecolor"><a class="header" href="#1gradientresamplecolor">1/GradientResampleColor</a></h3>
+<p>This example adds a URP RendererFeature to resample the value of the blit image (in other words, the lightness/darkness of the image) to match the gradient provided in the post-processing material</p>
+<p>Use <strong>FullscreenRenderPassRenderFeature</strong> together with <strong>[PAB_GradientMapEffect]</strong> material</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>The FullscreenPassRendererFeature requires <strong>Fetch Color Buffer</strong></p>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>You can change the gradient image to another image of your choosing. This example uses a Lospec pallete.
+Substitute the Renderer in this image example with your active Renderer
+<img src="pixel-animation-baker/pixel-animation-baker/assets%2FResampleColor.png" alt="ResampleColor.png"></p>
+</blockquote>
+<h4 id="material-specs"><a class="header" href="#material-specs">Material Specs</a></h4>
+<ul>
+<li>
+<dl>
+<dt id="gradienttexture"><a class="header" href="#gradienttexture">GradientTexture</a></dt>
+<dd>the texture to sample color from, you can either set the filter mode of this texture to Bilinear for a smooth color transition, or Point, for a clean stylized color transition. The colors of the texture should be one horizontal strip, and should go from dark to light from left to right.</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="valuecalculationmode"><a class="header" href="#valuecalculationmode">ValueCalculationMode</a></dt>
+<dd>the types of lightness/darkness calculation. GREYSCALE is a simple average calculation, while LUMINANCE uses explicit weights to be more accurate to how human eyes perceive colors.</dd>
+</dl>
+<h3 id="2posterize"><a class="header" href="#2posterize">2/Posterize</a></h3>
+</li>
+</ul>
+<p>This effect reduces the color to achieve the rougher flat-shading stylized look</p>
+<p>Use <strong>PosteriseRendererFeature</strong> with the material <strong>[PAB_PosterizeEffect]</strong></p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>The FullscreenPassRendererFeature requires <strong>Fetch Color Buffer</strong></p>
+</blockquote>
+<h4 id="material-specs-1"><a class="header" href="#material-specs-1">Material Specs</a></h4>
+<p>Hue Posterization:</p>
+<ul>
+<li>
+<dl>
+<dt id="posterizehue"><a class="header" href="#posterizehue">PosterizeHue</a></dt>
+<dd>enable this to posterize hue</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="huesteps"><a class="header" href="#huesteps">HueSteps</a></dt>
+<dd>the step to perform hue posterization. As a rule of thumb, the lower this value, the more the hue variance is reduced</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="posterizehuelightness"><a class="header" href="#posterizehuelightness">PosterizeHueLightness</a></dt>
+<dd>enable this to posterize hue lightness</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="posterizehuelightnessgradient"><a class="header" href="#posterizehuelightnessgradient">PosterizeHueLightnessGradient</a></dt>
+<dd>within the hue, the gradient to posterize the lightness/darkness</dd>
+</dl>
+<h3 id="3outline"><a class="header" href="#3outline">3/Outline</a></h3>
+</li>
+</ul>
+<p>This effect adds an outline to your image using the depth data.</p>
+<p>Use <strong>FullscreenRenderPassRenderFeature</strong> together with <strong>PAB_Outline</strong> material</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>The FullscreenPassRendererFeature requires <strong>Fetch Color Buffer</strong> and <strong>Depth</strong></p>
+</blockquote>
+<h4 id="material-specs-2"><a class="header" href="#material-specs-2">Material Specs</a></h4>
+<p>Outline Color:</p>
+<ul>
+<li>
+<dl>
+<dt id="saturation"><a class="header" href="#saturation">Saturation</a></dt>
+<dd>The saturation of the outline</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="color-multiply"><a class="header" href="#color-multiply">Color Multiply</a></dt>
+<dd>The outline color will be a median of its surrounding color, then multiplied by this color parameter</dd>
+</dl>
+</li>
+</ul>
+<p>Depth:</p>
+<ul>
+<li>
+<dl>
+<dt id="depth-difference-threshold"><a class="header" href="#depth-difference-threshold">Depth Difference Threshold</a></dt>
+<dd>The depth distance threshold that would register a pixel as an outline</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="outline-mode"><a class="header" href="#outline-mode">Outline Mode</a></dt>
+<dd>Whether the outline is to be inside or outside of the image</dd>
+</dl>
+</li>
+</ul>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Generally, a lower Depth Difference Threshold means the effect will be more likely to register an edge as an outline</p>
+</blockquote>
+<h3 id="4paletteresample"><a class="header" href="#4paletteresample">4/PaletteResample</a></h3>
+<p>This effect change the colors of your frame to those from the input palette based on which color on the palette is closest to the source color.</p>
+<p><strong>The feature currently support only horizontal palette!</strong></p>
+<p>You can use this feature by adding the <strong>PalleteResampleRendererFeature</strong> RendererFeature to the RendererData active in the <strong>[SampleCamera]</strong></p>
+<h4 id="feature-specs"><a class="header" href="#feature-specs">Feature Specs</a></h4>
+<p>The config for this feature is directly on the RendererFeature inspector. It’s comprised of two distinct phase, (1st) Extract the colors from the Color Palette textures, and (2nd) Redraw the fullscreen frame with the extracted colors.</p>
+<p>The second phase is inherited from Unity’s FullScreenPassRendererFeature, which you can view further info here  <a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/api/Global%20Namespace.FullScreenPassRendererFeature.html">https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/api/Global%20Namespace.FullScreenPassRendererFeature.html</a></p>
+<p>Fullscreen Config:</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>The <strong>Pass Material</strong> field must be set to <strong>PAB_PaletteResample</strong> material
+The FullscreenPassRendererFeature requires <strong>Fetch Color Buffer</strong></p>
+</blockquote>
+<p>Palette Config:</p>
+<ul>
+<li>
+<dl>
+<dt id="color-horizontal"><a class="header" href="#color-horizontal">Color Horizontal</a></dt>
+<dd>The number of colors on your palette texture, all colors are sampled horizontally</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="palette-texture"><a class="header" href="#palette-texture">Palette Texture</a></dt>
+<dd>The palette texture. When the texture width is higher than the color count, you can change the filter setting of the texture to either get a rough or smooth gradient</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="compute-shader"><a class="header" href="#compute-shader">Compute Shader</a></dt>
+<dd>(exact) The compute shader extracting the palette colors. This field must be set to the <strong>ExtractColorPalette</strong> Compute Shader</dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt id="palette-material"><a class="header" href="#palette-material">Palette Material</a></dt>
+<dd>(exact) The material to receive the color palettes. This field must be set to the <strong>PAB_PaletteResample</strong> material</dd>
+</dl>
+</li>
+</ul>
+<blockquote>
+<p>The field highlighted in yellow <strong>must exactly adhere</strong> to this image reference, with the exception of the material which has been renamed from [Shader Graphs_PaletteResample] to [PAB_PaletteResample]</p>
+<p>The field highlighted in green is open to user adjustment.
+<img src="pixel-animation-baker/pixel-animation-baker/assets%2FPaletteResampleSpec.png" alt="PaletteResampleSpec.png"></p>
+</blockquote>
+<hr>
+<h2 id="4troubleshoot-manual"><a class="header" href="#4troubleshoot-manual"><strong>4/Troubleshoot Manual</strong></a></h2>
+<h3 id="common-problems"><a class="header" href="#common-problems">Common Problems</a></h3>
+<p><strong>1. Baked spritesheet’s background is not transparent</strong></p>
+<p>First, verify that your configuration is correct:</p>
+<ul>
+<li><strong>[SampleCamera]</strong>’s background color (clear color) is transparent (alpha is zero)</li>
+<li><strong>SampleRenderTexture</strong> is referenced as <strong>[SampleCamera]</strong>’s Output Texture and its color format has alpha component</li>
+<li>In your <strong>URP Render Asset</strong>, make sure that you tick <strong>Alpha Processing</strong> in the Post-processing dropdown</li>
+</ul>
+<hr>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
